@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700i" rel="stylesheet">
+<style>
+
+svg {
+	font: 10px sans-serif;
+}
+
+.background path {
+	fill: none;
+	stroke: #5c636f;
+	stroke-opacity: .4;
+	shape-rendering: crispEdges;
+}
+
+body {
+	background-color: #21252b;
+}
+
+
+path.asia{
+	fill: none;
+	stroke: #4FAAFF;
+	stroke-opacity:0.6;
+	stroke-width: 1.8px;
+}
+path.south_america{
+	fill: none;
+	stroke: #FFA651;
+	stroke-opacity:0.6;
+	stroke-width: 1.8px;
+}
+path.north_america{
+	fill: none;
+	stroke: #E87080;
+	stroke-opacity:0.6;
+	stroke-width: 1.8px;
+}
+path.oceania{
+	fill: none;
+	stroke: #ACE28A;
+	stroke-opacity:0.6;
+	stroke-width: 1.8px;
+}
+path.africa{
+	fill: none;
+	stroke: #10A67E;
+	stroke-opacity:0.6;
+	stroke-width: 1.8px;
+}
+path.europe{
+	fill: none;
+	stroke: #B67BE4;
+	stroke-opacity:0.6;
+	stroke-width: 1.8px;
+}
+
+path.highlight{
+	fill: none;
+	stroke: #ffe200;
+	stroke-opacity:0.7;
+	stroke-width: 5px;
+}
+
+/* .foreground path {
+fill: none;
+stroke: steelblue;
+stroke-opacity: .7;
+} */
+
+.brush .extent {
+	fill-opacity: .3;
+	stroke: #fff;
+	shape-rendering: crispEdges;
+}
+
+.axis line,
+.axis path {
+	fill: none;
+	stroke: #5c636f;
+	shape-rendering: crispEdges;
+}
+
+.axistitle{
+	fill: #9fa6b7;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.axis text {
+	fill: #5c636f;
+	cursor: move;
+}
+
+.tooltip{
+	background-color: #3c424f;
+	color: #9fa6b7;
+	padding: 6px 10px 6px 10px;
+	border-radius:30px;
+	box-shadow: 2px 2px 10px #21252b;
+}
+
+.waveButton{
+	background-color: #3c424f;
+	color: #9fa6b7;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	padding: 3px 30px 3px 30px;
+	border: 0px solid #5c636f;
+	border-radius:30px;
+	margin: 10px 10px 10px 10px;
+}
+
+.waveButton:hover{
+	background-color: #5c636f;
+	color: #ced2dd;
+}
+
+.regionButton{
+	background-color: #3c424f;
+	color: #fff;
+	font-size: 12px;
+	font-family: 'Open Sans', sans-serif;
+	padding: 3px 10px 3px 10px;
+	border: 0px solid #5c636f;
+	border-radius:30px;
+	margin: 5px 20px 5px 0;
+	width: 120px;
+	opacity: 0.8;
+
+}
+.regionButton:hover{
+	opacity: 1;
+}
+
+
+
+
+/* Layout css */
+h1{
+	color:  #ced2dd;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+	font-style: italic;
+	margin: 30px 0 20px 0;
+}
+
+.intro{
+	color: #9fa6b7;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+}
+
+.info{
+	font-size:12px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.content{
+	margin: 20px 0 20px 0;
+}
+.vistitle{
+	font-family: 'Open Sans', sans-serif;
+	color:#9fa6b7;
+	font-size: 16px;
+	font-weight: 800;
+	margin-top: 10px;
+}
+.axisName{
+	font-family: 'Open Sans', sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	color: #ced2dd;
+}
+
+.footer{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	color:#9fa6b7;
+	margin-top: 15px;
+}
+
+</style>
+
+
+
+<body>
+
+	<div class="container-fluid" style="padding: 0 30px 30px 30px;">
+		<div class="row col-md-12">
+			<h1>What is the important in your life?</h1>
+		</div>
+		<div class="row col-md-12">
+			<p class="intro col-md-11" style="padding:0;">This parallel coordinates visualization is designed to explore how do people feel about basic object (eg. family, friend, religion)
+				in different country. I use data "the percentage of people who think highly of" to show this feeling.
+				Additionally, attributes of country (eg. Income per person, birth rate, urban population) are showed as well,
+				assisting in observing relationship among country and citizens' feeling.
+			</p>
+		</div>
+
+		<!-- Time Filter Button -->
+		<div class="row col-md-12" style="margin-top:12px;">
+			<p class="vistitle col-md-3">Relation Visualization in <span id="wave">2005-2009</span></p>
+			<div class="col-md-7">
+				<button type="button" class="waveButton" id="wave1" name="wave1">1989-1993</button>
+				<button type="button" class="waveButton" id="wave2" name="wave2">1994-1998</button>
+				<button type="button" class="waveButton" id="wave3" name="wave3">1999-2004</button>
+				<button type="button" class="waveButton" id="wave4" name="wave4">2005-2009</button>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="vis row col-md-12"></div>
+		</div>
+
+		<!-- Region Filter Button -->
+			<div style="padding: 20px 0px 20px 30px" >
+				<span style="color:#5c636f; margin-right:20px;font-size:12px;">Select the region you interest</span>
+				<button type="button" class="regionButton" id="all" name="all">All Region</button>
+				<button type="button" class="regionButton" style="background-color:#4FAAFF" id="asia" name="asia">Asia</button>
+				<button type="button" class="regionButton" style="background-color:#10A67E" id="africa" name="africa">Africa</button>
+				<button type="button" class="regionButton" style="background-color:#B67BE4" id="europe" name="europe">Europe</button>
+				<button type="button" class="regionButton" style="background-color:#E87080" id="north_america" name="north_america">North America</button>
+				<button type="button" class="regionButton" style="background-color:#FFA651" id="south_america" name="south_america">South America</button>
+				<button type="button" class="regionButton" style="background-color:#ACE28A" id="oceania" name="oceania">Oceania</button>
+			</div>
+
+			<!-- Information explain -->
+			<div class="info col-md-12">
+				<p style="color:#9fa6b7;">Explanation of each axis</p>
+				<ul style="color:#9fa6b7; font-weight:400;">
+
+					<p style="color:#5c636f; margin:12px 0 3px 0;">Country Attributes</p>
+					<li><span class="axisName">Employee : </span> Percentage of all labor that earns a salary from working. </li>
+					<li><span class="axisName">Income : </span> Income per person. Gross Domestic Product per capita in constant 2000 US$.
+						The inflation but not the differences in the cost of living between countries has been taken into account.</li>
+					<li><span class="axisName">Birth : </span> Crude birth rate (births per 1000 population) </li>
+					<li><span class="axisName">Urban : </span> Urban population (% of total), which refers to people living in urban areas as defined by national statistical offices. </li>
+					<li><span class="axisName">Young Labor : </span> Age 25-54 labor to population (%). For age group 25-54, percentage of all labor to total population. </li>
+					<li><span class="axisName">Old Labor : </span> Age 65+ labor to population (%). For age group 65+, percentage of all labor to total population.  </li>
+
+					<p style="color:#5c636f; margin:12px 0 3px 0;">How do people feel</p>
+					<li><span class="axisName">Family : </span> The percentage of who think family is very important in life.</li>
+					<li><span class="axisName">Friend : </span> The percentage of who think friend is very important in life.</li>
+					<li><span class="axisName">Leisure : </span> The percentage of who think leisure time is very important in life.</li>
+					<li><span class="axisName">Politics : </span> The percentage of who think politics is very important in life.</li>
+					<li><span class="axisName">Work : </span> The percentage of who think work is very important in life.</li>
+					<li><span class="axisName">Religion : </span> The percentage of who think religion is very important in life.</li>
+					<li><span class="axisName">Happiness : </span> The percentage of who feel very happy about life. </li>
+					<li><span class="axisName">Health : </span> The percentage of who feel very healthy. </li>
+					<li><span class="axisName">Satisfication : </span> The percentage of who are very satisfy to life. </li>
+					<li><span class="axisName">Freedom : </span> The percentage of who feel very freedom in the country. </li>
+				</ul>
+			</div>
+
+			<div class="footer col-md-12">
+				<span>Designer: Yumin Hong [ yumin@kth.se ]</span><br>
+				<span>Data source: <a href="http://www.worldvaluessurvey.org/wvs.jsp">World Value Survey</a>
+					and <a href="https://www.gapminder.org/">Gapminder</a></span><br>
+				<span>All right reserved</span>
+
+			</div>
+
+
+
+</div>
+
+
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="d3.min.js"></script>
+		<script src="ParallelCoordinates.js"></script>
+		<script src="Controller.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			var content = new SelectWave($(".content"));
+		});
+
+		</script>
+
+
+	</body>
