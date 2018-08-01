@@ -39,6 +39,7 @@ var vis = function(data){
       .range([h, 0]));
     }));
 
+
     // Add grey background lines for context.
     background = svg.append("g")
     .attr("class", "background")
@@ -226,4 +227,4 @@ var vis = function(data){
 //end vis function
 
 //Initiate Vis
-vis("data.csv");
+vis("data3.csv");
