@@ -3,16 +3,16 @@ var vis = function(data){
   var dataTime=data;
 
   var m=[30,10,10,10];
-  var w = 1200;
-  var h = 400;
+  var w = 2200;
+  var h = 260;
 
   var x = d3.scale.ordinal().rangePoints([0, w], 1);
   var y = {};
   var dragging = {};
 
-  var formatAsPercentage = d3.format("%");
+  // var formatAsPercentage = d3.format("%");
   var line = d3.svg.line();
-  var axis_percent = d3.svg.axis().orient("left").tickFormat(formatAsPercentage).ticks(5);
+  var axis_percent = d3.svg.axis().orient("left").ticks(5);
   var axis_value = d3.svg.axis().orient("left");
   var background;
   var foreground;
@@ -34,7 +34,7 @@ var vis = function(data){
 
     // Extract the list of dimensions and create a scale for each.
     x.domain(dimensions = d3.keys(waves[0]).filter(function(d) {
-      return d != "country" && d!="region" && (y[d] = d3.scale.linear()
+      return d != "course" && (y[d] = d3.scale.linear()
       .domain(d3.extent(waves, function(p) { return +p[d]; }))
       .range([h, 0]));
     }));
@@ -54,29 +54,44 @@ var vis = function(data){
     .data(waves)
     .enter().append("path")
     .attr("class", function(d){
-      if (d.region == "asia") {
-        return "asia";
+      if (d.course == "法学") {
+        return "law";
       }
-      else if (d.region == "south_america") {
-        return "south_america";
+      else if (d.course == "心理学") {
+        return "psychology";
       }
-      else if (d.region == "oceania") {
-        return "oceania";
+      else if (d.course == "工商管理") {
+        return "management";
       }
-      else if (d.region == "europe") {
-        return "europe";
+      else if (d.course == "金融学") {
+        return "finance";
       }
-      else if (d.region == "north_america") {
-        return "north_america";
+      else if (d.course == "工业设计") {
+        return "design";
       }
-      else if (d.region == "africa") {
-        return "africa";
+      else if (d.course == "建筑学") {
+        return "archi";
+      }
+      else if (d.course == "环境工程") {
+        return "environment";
+      }
+      else if (d.course == "人工智能") {
+        return "ai";
+      }
+      else if (d.course == "化学工程") {
+        return "chemistry";
+      }
+      else if (d.course == "航空航天") {
+        return "aero";
+      }
+      else if (d.course == "xx") {
+        return "xx";
       }
     }
   )
   .attr("d", path)
   .on("mouseover",function(d){
-    tooltip.html(d.country)
+    tooltip.html(d.course)
     .style("left",(d3.event.pageX) + "px")
     .style("top",(d3.event.pageY -100) + "px")
     .style("opacity",1.0);
@@ -87,23 +102,35 @@ var vis = function(data){
     tooltip.style("opacity",0);
     d3.select(this)
     .attr("class", function(d){
-      if (d.region == "asia") {
-        return "asia";
+      if (d.course == "法学") {
+        return "law";
       }
-      else if (d.region == "south_america") {
-        return "south_america";
+      else if (d.course == "心理学") {
+        return "psychology";
       }
-      else if (d.region == "oceania") {
-        return "oceania";
+      else if (d.course == "工商管理") {
+        return "management";
       }
-      else if (d.region == "europe") {
-        return "europe";
+      else if (d.course == "金融学") {
+        return "finance";
       }
-      else if (d.region == "north_america") {
-        return "north_america";
+      else if (d.course == "工业设计") {
+        return "design";
       }
-      else if (d.region == "africa") {
+      else if (d.course == "建筑学") {
+        return "archi";
+      }
+      else if (d.course == "环境工程") {
         return "africa";
+      }
+      else if (d.course == "人工智能") {
+        return "environment";
+      }
+      else if (d.course == "化学工程") {
+        return "chemistry";
+      }
+      else if (d.course == "航空航天") {
+        return "aero";
       }
     })});
 
@@ -148,7 +175,7 @@ var vis = function(data){
       if (d != "income") {
         d3.select(this).call(axis_percent.scale(y[d]));
       } else {
-        d3.select(this).call(axis_value.scale(y[d]));
+        // d3.select(this).call(axis_value.scale(0,10).domain(0,10).range(0,10));
       }
     })
     .append("text")
@@ -199,4 +226,4 @@ var vis = function(data){
 //end vis function
 
 //Initiate Vis
-vis("wave4.csv");
+vis("data.csv");

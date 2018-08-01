@@ -1,4 +1,5 @@
 //Time select Controller
+/*
 var SelectWave = function(container){
   var selectWave1 = document.getElementById('wave1');
   var selectWave2 = document.getElementById('wave2');
@@ -35,78 +36,123 @@ var SelectWave = function(container){
   }
 
 }
+*/
 
 
 //Region Filter Controller
-var selectAsia = document.getElementById('asia');
-selectAsia.onclick= function(){
-  d3.selectAll("path.africa, path.europe, path.north_america, path.south_america, path.oceania")
+var selectLaw = document.getElementById('law');
+selectLaw.onclick= function(){
+  d3.selectAll("path.psychology, path.management, path.finance, path.design, path.archi, path.environment, path.ai, path.chemistry, path.aero")
   .transition()
   .attr("display","none");
 
-  d3.selectAll("path.asia")
+  d3.selectAll("path.law")
   .transition()
   .attr("display","inline");
 }
 
-var selectAfrica = document.getElementById('africa');
-selectAfrica.onclick= function(){
-  d3.selectAll("path.asia, path.europe, path.north_america, path.south_america, path.oceania")
+var selectPsy = document.getElementById('psychology');
+selectPsy.onclick= function(){
+  d3.selectAll("path.law, path.management, path.finance, path.design, path.archi, path.environment, path.ai, path.chemistry, path.aero")
   .transition()
   .attr("display","none");
 
-  d3.selectAll("path.africa")
+  d3.selectAll("path.psychology")
   .transition()
   .attr("display","inline");
 }
 
-var selectEurope = document.getElementById('europe');
-selectEurope.onclick= function(){
-  d3.selectAll("path.asia, path.africa, path.north_america, path.south_america, path.oceania")
+var selectMana = document.getElementById('management');
+selectMana.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.finance, path.design, path.archi, path.environment, path.ai, path.chemistry, path.aero")
   .transition()
   .attr("display","none");
 
-  d3.selectAll("path.europe")
+  d3.selectAll("path.management")
   .transition()
   .attr("display","inline");
 }
 
-var selectNorth = document.getElementById('north_america');
-selectNorth.onclick= function(){
-  d3.selectAll("path.asia, path.africa, path.europe, path.south_america, path.oceania")
+var selectFinance = document.getElementById('finance');
+selectFinance.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.management, path.design, path.archi, path.environment, path.ai, path.chemistry, path.aero")
   .transition()
   .attr("display","none");
 
-  d3.selectAll("path.north_america")
+  d3.selectAll("path.finance")
   .transition()
   .attr("display","inline");
 }
 
-var selectSouth = document.getElementById('south_america');
-selectSouth.onclick= function(){
-  d3.selectAll("path.asia, path.africa, path.europe, path.north_america, path.oceania")
+var selectDesign = document.getElementById('design');
+selectDesign.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.management, path.finance, path.archi, path.environment, path.ai, path.chemistry, path.aero")
   .transition()
   .attr("display","none");
 
-  d3.selectAll("path.south_america")
+  d3.selectAll("path.design")
   .transition()
   .attr("display","inline");
 }
 
-var selectOcean = document.getElementById('oceania');
-selectOcean.onclick= function(){
-  d3.selectAll("path.asia, path.africa, path.europe, path.north_america, path.south_america")
+var selectArchi = document.getElementById('archi');
+selectArchi.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.management, path.finance, path.design, path.environment, path.ai, path.chemistry, path.aero")
   .transition()
   .attr("display","none");
 
-  d3.selectAll("path.oceania")
+  d3.selectAll("path.archi")
+  .transition()
+  .attr("display","inline");
+}
+
+var selectEnvi = document.getElementById('environment');
+selectEnvi.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.management, path.finance, path.design, path.archi, path.ai, path.chemistry, path.aero")
+  .transition()
+  .attr("display","none");
+
+  d3.selectAll("path.environment")
+  .transition()
+  .attr("display","inline");
+}
+
+var selectAi = document.getElementById('ai');
+selectAi.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.management, path.finance, path.design, path.archi, path.environment, path.chemistry, path.aero")
+  .transition()
+  .attr("display","none");
+
+  d3.selectAll("path.ai")
+  .transition()
+  .attr("display","inline");
+}
+
+var selectChem = document.getElementById('chemistry');
+selectChem.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.management, path.finance, path.design, path.archi, path.environment, path.ai, path.aero")
+  .transition()
+  .attr("display","none");
+
+  d3.selectAll("path.chemistry")
+  .transition()
+  .attr("display","inline");
+}
+
+var selectAero = document.getElementById('aero');
+selectAero.onclick= function(){
+  d3.selectAll("path.law, path.psychology, path.management, path.finance, path.design, path.archi, path.environment, path.chemistry, path.ai")
+  .transition()
+  .attr("display","none");
+
+  d3.selectAll("path.aero")
   .transition()
   .attr("display","inline");
 }
 
 var selectAll = document.getElementById('all');
 selectAll.onclick= function(){
-  d3.selectAll("path.asia, path.africa, path.europe, path.north_america, path.south_america, path.oceania")
+  d3.selectAll("path.law, path.psychology, path.management, path.finance, path.design, path.archi, path.environment, path.ai, path.chemistry, path.aero")
   .transition()
   .attr("display","inline");
 }
